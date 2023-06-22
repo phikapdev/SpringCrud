@@ -24,8 +24,7 @@ import com.phikapdev.springcrud.models.services.IClienteService;
 
 import jakarta.validation.Valid;
 
-// App de Angular
-@CrossOrigin(origins = { "http://localhost:4200" })
+@CrossOrigin(origins = { "*" })
 @RestController
 @RequestMapping("/api")
 public class ClienteApiController {
