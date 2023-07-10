@@ -90,7 +90,7 @@ public class ClienteController {
 
     @PutMapping(value = "/clientes/{id}" , consumes = "application/x-www-form-urlencoded")
     public ResponseEntity<?> update(@Valid Cliente cliente, BindingResult result, 
-                                    @PathVariable Long id) {
+    @PathVariable Long id) {
        
         Cliente clienteActual = clienteService.findById(id);
         Cliente clienteUpdate = null;
