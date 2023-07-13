@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -57,8 +58,8 @@ public class ClienteController {
         return new ResponseEntity<Cliente>(cliente, HttpStatus.OK);
     }
 
-    @PostMapping(value = "/clientes",  consumes = "application/x-www-form-urlencoded")
-    public ResponseEntity<?> create(@Valid Cliente cliente, BindingResult result) {
+    @PostMapping(value = "/clientes")
+    public ResponseEntity<?> create(@Valid @RequestBody Cliente cliente, BindingResult result) {
 
         Cliente clienteNew = null;
         Map<String, Object> response = new HashMap<>();
@@ -88,8 +89,8 @@ public class ClienteController {
         return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
     }
 
-    @PutMapping(value = "/clientes/{id}" , consumes = "application/x-www-form-urlencoded")
-    public ResponseEntity<?> update(@Valid Cliente cliente, BindingResult result, 
+    @PutMapping(value = "/clientes/{id}")
+    public ResponseEntity<?> update(@Valid @RequestBody Cliente cliente, BindingResult result, 
     @PathVariable Long id) {
        
         Cliente clienteActual = clienteService.findById(id);
